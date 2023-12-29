@@ -1,0 +1,10 @@
+{
+  "name": "@my-app/ui",
+  "version": "1.0.0",
+  "main": "src/index.ts",
+  "license": "MIT",
+  "dependencies": {
+    "react": "^18.2.0",
+    "react-icons": "^4.12.0"
+  }
+}
