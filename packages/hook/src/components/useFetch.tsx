@@ -1,7 +1,7 @@
 "use client"
 import { useState, useEffect } from "react";
  export const useFetch = (url: string) => {
-  const [data, setData] = useState(null);
+  const [data, setData] = useState([]);
 
   useEffect(() => {
     fetch(url)
@@ -9,5 +9,5 @@ import { useState, useEffect } from "react";
       .then((data) => setData(data));
   }, [url]);
 
-  return [data];
+  return data;
 };
