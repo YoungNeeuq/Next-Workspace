@@ -1,6 +1,7 @@
 import React, { ButtonHTMLAttributes } from 'react';
 import { IconDefinition } from '@fortawesome/fontawesome-svg-core';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+
 interface CustomButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
   variant?: "light" | "primary" | "secondary" | "success" | "danger" | "warning" | "disabled" | "dark" | "info";
   width?: string | number;
@@ -10,6 +11,7 @@ interface CustomButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
   icon?: IconDefinition;
   iconSize?: string;
   iconPosition?: 'before' | 'after';
+  shape?: 'circle' | 'square' | 'rectangle' | 'parallelogram';
 }
 
 export const Button: React.FC<CustomButtonProps> = ({
@@ -22,13 +24,31 @@ export const Button: React.FC<CustomButtonProps> = ({
   icon,
   iconSize,
   iconPosition = 'before',
+  shape,
   className,
   ...props
 }) => {
   const baseStyles = 'px-4 py-2 rounded focus:outline-none';
-
   let variantStyles: string;
   let disabled: boolean = false;
+  let shapeStyles: string;
+  switch (shape) {
+    case 'circle':
+      shapeStyles = 'rounded-full';
+      break;
+    case 'square':
+      shapeStyles = 'rounded-none';
+      break;
+    case 'rectangle':
+      shapeStyles = 'rounded';
+      break;
+    case 'parallelogram':
+      shapeStyles = 'transform skewX(-20deg)';
+      break;
+    default:
+      shapeStyles = '';
+  }
+
 
   switch (variant) {
     case 'primary':
@@ -66,7 +86,7 @@ export const Button: React.FC<CustomButtonProps> = ({
 
   return (
     <button
-    className={`${baseStyles} ${variantStyles} ${hover} ${className}`}
+    className={`${baseStyles} ${variantStyles} ${hover} ${className} ${shapeStyles}`}
     style={{ width, height, color }}
     disabled={disabled}
     {...props}
