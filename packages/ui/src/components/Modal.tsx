@@ -1,4 +1,4 @@
-import React from 'react';
+import React from "react";
 
 interface ModalProps {
   isVisible: boolean;
@@ -26,15 +26,15 @@ export const Modal: React.FC<ModalProps> = ({
   if (!isVisible) return null;
 
   const handleClose = (e: any) => {
-    if (e.target.id === 'wrapper') onClose();
+    if (e.target.id === "wrapper") onClose();
   };
 
   const modalStyles: React.CSSProperties = {
-    height: height || 'auto',
-    width: width || '600px',
-    backgroundColor: backgroundColor || 'white',
-    borderRadius: borderRadius || '4px',
-    color: textColor || 'black',
+    height: height || "auto",
+    width: width || "600px",
+    backgroundColor: backgroundColor || "white",
+    borderRadius: borderRadius || "4px",
+    color: textColor || "black",
   };
 
   return (

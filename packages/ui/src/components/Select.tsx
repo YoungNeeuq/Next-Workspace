@@ -1,4 +1,9 @@
-import React, { SelectHTMLAttributes, ChangeEvent, useState, useEffect } from 'react';
+import React, {
+  SelectHTMLAttributes,
+  ChangeEvent,
+  useState,
+  useEffect,
+} from "react";
 
 interface Option {
   label: string;
@@ -28,7 +33,9 @@ export const Select: React.FC<CustomSelectProps> = ({
   width,
   ...props
 }) => {
-  const [selectedValue, setSelectedValue] = useState<string | undefined>(undefined);
+  const [selectedValue, setSelectedValue] = useState<string | undefined>(
+    undefined,
+  );
 
   const handleSelectChange = (event: ChangeEvent<HTMLSelectElement>) => {
     const selectedValue = event.target.value;
@@ -43,20 +50,22 @@ export const Select: React.FC<CustomSelectProps> = ({
     setSelectedValue(undefined);
   }, [options]);
 
-  const baseStyles = 'p-4 rounded border cursor-pointer';
+  const baseStyles = "p-4 rounded border cursor-pointer";
 
   const style: React.CSSProperties = {
-    fontSize: fontSize || 'inherit',
-    color: color || 'inherit',
-    outline: outline || 'none',
-    backgroundColor: backgroundColor || '',
-    height: height || 'auto',
-    width: width || '100%',
+    fontSize: fontSize || "inherit",
+    color: color || "inherit",
+    outline: outline || "none",
+    backgroundColor: backgroundColor || "",
+    height: height || "auto",
+    width: width || "100%",
   };
 
   return (
     <select
-      className={`${baseStyles} ${selectedValue ? 'active' : ''} ${className || ''}`}
+      className={`${baseStyles} ${selectedValue ? "active" : ""} ${
+        className || ""
+      }`}
       onChange={handleSelectChange}
       style={style}
       value={selectedValue}
